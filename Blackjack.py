@@ -1,8 +1,15 @@
+from Deck import Deck
+
+
 class Blackjack:
 
     def __init__(self):
         self.player_bankroll = 1000
         self.bet_amount = 0
+        self.deck = Deck()
+        self.deck.shuffle()
+        self.player_hand = []
+        self.dealer_hand = []
 
 
     def start_game(self):
@@ -29,7 +36,8 @@ class Blackjack:
 
 
     def deal_hands(self):
-        pass
+        self.player_hand = self.deck.draw(2)
+        self.dealer_hand = self.deck.draw(2)
 
 
     def play_out_hands(self):

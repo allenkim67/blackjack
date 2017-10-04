@@ -1,26 +1,28 @@
 **Deck.py**
 
-I've implemented both `create_cards` and `shuffle` methods because they're both
-fairly simple.
+For the `draw` method we need to:
 
-For representing cards I've decided to use a dictionary. I think
-strings would be too inflexible. What if we want to add more properties, for
-example the card's numeric value? On the other hand I don't think a `Card` class
-is necessary because I don't see a card needing any methods, it's just data.
+1. get the last `n` cards
+2. set `self.cards` to everything but the last `n` cards
+3. return the last `n` cards
 
-If you're wondering about the list comprehension with 2 for loops it's the
-same as this:
+We do this using list slicing which is very flexible and useful. Check the
+references below for more details.
 
-```
-cards = []
-for v in values:
-    for s in suit:
-        cards.append({'value': v, 'suits': s})
-```
 
 #### Follow Along
-Next let's finish the `draw` method.
+Next let's get back to the `Blackjack` class and work on the `play_out_hands`
+method. This is probably the most complex method in this tutorial, so it would
+be good to carefully consider the list of steps this method will take. I
+consider `play_out_hands` to be done when there are no more actions to take and
+no more cards to be drawn. If you want a refresher on the rules of blackjack
+check the link below. Finally, we won't be implementing special actions like
+*double down*, *split*, or *insurance*, but I encourage you to give it a shot
+at the end of this tutorial.
 
 
 #### References
-[Python docs - random.shuffle](https://docs.python.org/3/library/random.html#random.shuffle)
+
+[How to play blackjack](http://www.bicyclecards.com/how-to-play/blackjack/)
+
+[Explain slice notation](https://stackoverflow.com/questions/509211/explain-slice-notation)

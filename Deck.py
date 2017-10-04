@@ -14,7 +14,9 @@ class Deck:
 
 
     def draw(self, n):
-        pass
+        drawn_cards = self.cards[-n:]
+        self.cards = self.cards[:-n]
+        return drawn_cards
 
 
     def shuffle(self):

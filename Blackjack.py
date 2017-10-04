@@ -56,7 +56,13 @@ class Blackjack:
 
 
     def print_hands(self, hide_dealer_card=False):
-        pass
+        dealer_hand = [card['str'] for card in self.dealer.hand]
+        if hide_dealer_card:
+            dealer_hand[0] = '(hidden)'
+        player_hand = [card['str'] for card in self.dealer.hand]
+
+        print('Dealer has: {}'.format(' '.join(dealer_hand)))
+        print('Player has: {}'.format(' '.join(player_hand)))
 
 
     def make_payouts(self):

@@ -12,7 +12,8 @@ class Deck:
         suits = ['C', 'D', 'H', 'S']
         return [{'value': v,
                  'suit': s,
-                 'n_value': self.n_value(v)} for v in values for s in suits]
+                 'n_value': self.n_value(v),
+                 'str': v + s} for v in values for s in suits]
 
 
     def n_value(self, v):

@@ -10,7 +10,18 @@ class Deck:
     def create_cards(self):
         values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
         suits = ['C', 'D', 'H', 'S']
-        return [{'value': v, 'suit': s} for v in values for s in suits]
+        return [{'value': v,
+                 'suit': s,
+                 'n_value': self.n_value(v)} for v in values for s in suits]
+
+
+    def n_value(self, v):
+        if v in ['J', 'Q', 'K']:
+            return 10
+        elif v == 'A':
+            return 11
+        else:
+            return int(v)
 
 
     def draw(self, n):

@@ -1,7 +1,7 @@
 class Blackjack:
 
     def __init__(self):
-        pass
+        self.player_bankroll = 1000
 
 
     def start_game(self):
@@ -17,7 +17,7 @@ class Blackjack:
 
 
     def keep_playing(self):
-        pass
+        return self.player_bankroll > 0
 
 
     def take_bets(self):

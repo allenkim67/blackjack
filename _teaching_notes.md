@@ -1,23 +1,26 @@
-**Blackjack.py**
+**Deck.py**
 
-Let's think about what needs to happen in `deal_hands`:
+I've implemented both `create_cards` and `shuffle` methods because they're both
+fairly simple.
 
-1. We need to create cards
-2. We need to draw cards and deal cards randomly
-3. We need to store the cards as player and dealer hands
+For representing cards I've decided to use a dictionary. I think
+strings would be too inflexible. What if we want to add more properties, for
+example the card's numeric value? On the other hand I don't think a `Card` class
+is necessary because I don't see a card needing any methods, it's just data.
 
-One way we could do this is to add methods to the `Blackjack` class like `create_cards`,
-`shuffle_cards`, `deal_cards`. But our `Blackjack` class is getting long and all
-these methods are related to cards so it seems like a good place to create a new
-`Deck` class.
+If you're wondering about the list comprehension with 2 for loops it's the
+same as this:
 
-Assuming we have a `Deck` class, now what needs to happen is:
-
-1. Create a `Deck` object and  shuffle it
-2. In `deal_hands` draw cards from the deck and...
-3. Assign the cards to `self.player_hand` and `self.dealer_hand`
+```
+cards = []
+for v in values:
+    for s in suit:
+        cards.append({'value': v, 'suits': s})
+```
 
 #### Follow Along
-We need to complete the methods that have been setup in the `Deck` class. Let's
-start with `create_cards`. Think about how you want cards to be represented. A
-string? A dictionary? A class?
+Next let's finish the `draw` method.
+
+
+#### References
+[Python docs - random.shuffle](https://docs.python.org/3/library/random.html#random.shuffle)

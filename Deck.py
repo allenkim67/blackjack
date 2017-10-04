@@ -1,3 +1,6 @@
+from random import shuffle
+
+
 class Deck:
 
     def __init__(self):
@@ -5,7 +8,9 @@ class Deck:
 
 
     def create_cards(self):
-        pass
+        values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
+        suits = ['C', 'D', 'H', 'S']
+        return [{'value': v, 'suit': s} for v in values for s in suits]
 
 
     def draw(self, n):
@@ -13,4 +18,4 @@ class Deck:
 
 
     def shuffle(self):
-        pass
+        shuffle(self.cards)

@@ -2,6 +2,7 @@ class Blackjack:
 
     def __init__(self):
         self.player_bankroll = 1000
+        self.bet_amount = 0
 
 
     def start_game(self):
@@ -21,7 +22,10 @@ class Blackjack:
 
 
     def take_bets(self):
-        pass
+        print('Available bankroll: {}'.format(self.player_bankroll))
+        bet_amount = int(input('How much would you like to bet?\n'))
+        self.player_bankroll -= bet_amount
+        self.bet_amount = bet_amount
 
 
     def deal_hands(self):

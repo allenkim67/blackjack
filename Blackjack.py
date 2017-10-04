@@ -1,15 +1,15 @@
 from Deck import Deck
+from Player import Player
 
 
 class Blackjack:
 
     def __init__(self):
-        self.player_bankroll = 1000
         self.bet_amount = 0
         self.deck = Deck()
         self.deck.shuffle()
-        self.player_hand = []
-        self.dealer_hand = []
+        self.player = Player()
+        self.dealer = Player()
 
 
     def start_game(self):
@@ -25,22 +25,37 @@ class Blackjack:
 
 
     def keep_playing(self):
-        return self.player_bankroll > 0
+        return self.player.bankroll > 0
 
 
     def take_bets(self):
-        print('Available bankroll: {}'.format(self.player_bankroll))
+        print('Available bankroll: {}'.format(self.player.bankroll))
         bet_amount = int(input('How much would you like to bet?\n'))
-        self.player_bankroll -= bet_amount
+        self.player.bankroll -= bet_amount
         self.bet_amount = bet_amount
 
 
     def deal_hands(self):
-        self.player_hand = self.deck.draw(2)
-        self.dealer_hand = self.deck.draw(2)
+        self.player.hand = self.deck.draw(2)
+        self.dealer.hand = self.deck.draw(2)
 
 
     def play_out_hands(self):
+        blackjack = self.dealer.hand_value() == 21 or self.player.hand_value() == 21
+
+        if not blackjack:
+            while self.player.hand_value() < 22:
+                self.print_hands(hide_dealer_card=True)
+                action = input('Enter H for hit or S for stay.\n')
+                if action == 'H':
+                    self.player.hand += self.deck.draw(1)
+                elif action == 'S':
+                    while self.dealer.hand_value() < 17:
+                        self.dealer.hand += self.deck.draw(1)
+                    break
+
+
+    def print_hands(self, hide_dealer_card=False):
         pass
 
 

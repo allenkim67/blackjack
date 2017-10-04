@@ -66,4 +66,16 @@ class Blackjack:
 
 
     def make_payouts(self):
-        pass
+        self.print_hands()
+
+        p_val = self.player.hand_value()
+        d_val = self.dealer.hand_value()
+
+        if d_val > 21 or d_val < p_val < 22:
+            print('You win!')
+            self.player.bankroll -= self.bet_amount * 2
+        elif d_val == p_val:
+            print('Push!')
+            self.player.bankroll -= self.bet_amount
+        else:
+            print('You lose.')

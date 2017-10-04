@@ -20,6 +20,7 @@ class Blackjack:
             self.deal_hands()
             self.play_out_hands()
             self.make_payouts()
+            self.cleanup()
 
         print('Thanks for playing!')
 
@@ -79,3 +80,13 @@ class Blackjack:
             self.player.bankroll -= self.bet_amount
         else:
             print('You lose.')
+
+
+    def cleanup(self):
+        self.bet_amount = 0
+
+        self.player.hand = []
+        self.dealer.hand = []
+
+        self.deck = Deck()
+        self.deck.shuffle()
